@@ -6,7 +6,14 @@ const configuration = require('./configuration.json')[process.env.NODE_ENV || 'l
 
 const server = Hapi.server({
   port: 3001,
-  host: 'localhost'
+  host: 'localhost',
+  router: {
+    isCaseSensitive: false,
+    stripTrailingSlash: true
+  },
+  routes: {
+    cors: true
+  }
 })
 
 const init = async () => {
@@ -17,6 +24,16 @@ const init = async () => {
         prettyPrint: process.env.NODE_ENV !== 'prod',
         allTags: configuration.loggerLevel,
         logEvents: ['response', 'onPostStart', '']
+      }
+    },
+    {
+      plugin: require('hapi-mongodb'),
+      options: {
+        url: configuration.dbUrl,
+        settings: {
+          poolSize: 10
+        },
+        decorate: true
       }
     },
     require('./plugins/game'),

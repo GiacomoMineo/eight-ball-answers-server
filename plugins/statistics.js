@@ -4,7 +4,7 @@ module.exports = {
   register: function (server, options) {
     server.route({
       method: 'GET',
-      path: '/stats',
+      path: '/api/stats',
       handler: function (request, h) {
         return 'ok'
       }
