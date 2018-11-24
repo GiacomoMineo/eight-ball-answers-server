@@ -1,19 +1,22 @@
-const Joi = require('joi')
+const Joi = require("joi");
 
 module.exports = {
-  register: function (server, options) {
+  register: function(server, options) {
     const handlers = {
-      createQuestion: async function (request, h) {
-        const answer = server.GameService.getRandomAnswer()
-        await server.StatisticsService.saveQuestionAnswerPair(request.payload.questionText, answer)
-        return answer
+      createQuestion: async function(request, h) {
+        const answer = server.GameService.getRandomAnswer();
+        await server.StatisticsService.saveQA(
+          request.payload.questionText,
+          answer
+        );
+        return answer;
       }
-    }
+    };
 
     const routes = [
       {
-        method: 'POST',
-        path: '/api/game/question',
+        method: "POST",
+        path: "/api/game/question",
         handler: handlers.createQuestion,
         options: {
           validate: {
@@ -23,10 +26,10 @@ module.exports = {
           }
         }
       }
-    ]
+    ];
 
-    server.route(routes)
+    server.route(routes);
   },
-  name: 'game',
-  version: '1.0.0'
-}
+  name: "game",
+  version: "1.0.0"
+};

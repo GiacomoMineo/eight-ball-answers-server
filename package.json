@@ -22,6 +22,7 @@
   "dependencies": {
     "hapi": "17.7.0",
     "hapi-mongodb": "8.0.0",
-    "hapi-pino": "5.1.0"
+    "hapi-pino": "5.1.0",
+    "moment": "2.22.2"
   }
 }
