@@ -36,6 +36,7 @@ const init = async () => {
         decorate: true
       }
     },
+    require('./plugins/services'),
     require('./plugins/game'),
     require('./plugins/statistics')
   ])

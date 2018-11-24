@@ -1,13 +1,21 @@
 module.exports = {
-  name: 'statistics',
-  version: '1.0.0',
   register: function (server, options) {
-    server.route({
-      method: 'GET',
-      path: '/api/stats',
-      handler: function (request, h) {
+    const handlers = {
+      getStatistics: function (request, h) {
         return 'ok'
       }
-    })
-  }
+    }
+
+    const routes = [
+      {
+        method: 'GET',
+        path: '/api/statistics',
+        handler: handlers.getStatistics
+      }
+    ]
+
+    server.route(routes)
+  },
+  name: 'statistics',
+  version: '1.0.0'
 }
