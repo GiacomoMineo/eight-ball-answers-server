@@ -4,9 +4,8 @@ const Hapi = require('hapi')
 
 const configuration = require('./configuration.json')[process.env.NODE_ENV || 'local']
 
-const server = Hapi.server({
+const serverOptions = {
   port: process.env.PORT || configuration.serverPort,
-  host: 'localhost',
   router: {
     isCaseSensitive: false,
     stripTrailingSlash: true
@@ -14,7 +13,12 @@ const server = Hapi.server({
   routes: {
     cors: true
   }
-})
+}
+if (configuration.serverHost) {
+  serverOptions.host = configuration.serverHost
+}
+
+const server = Hapi.server(serverOptions)
 
 const init = async () => {
   await server.register([
