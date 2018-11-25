@@ -1,4 +1,5 @@
 const moment = require('moment')
+const Boom = require('boom')
 
 // options: { mongo }
 module.exports = options => {
@@ -30,6 +31,10 @@ module.exports = options => {
     },
 
     async getDailyStatistics (from, to) {
+      if (from > to || to < from) {
+        return Boom.badRequest('The from parameter must be lower than the to parameter.')
+      }
+
       try {
         return await dailyColl.find({
           partitionDate: { $gte: from, $lte: to }

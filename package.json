@@ -20,9 +20,11 @@
     "standard": "12.0.1"
   },
   "dependencies": {
+    "boom": "^7.2.2",
     "hapi": "17.7.0",
     "hapi-mongodb": "8.0.0",
     "hapi-pino": "5.1.0",
+    "joi": "^14.2.0",
     "moment": "2.22.2"
   }
 }
