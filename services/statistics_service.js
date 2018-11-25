@@ -36,9 +36,13 @@ module.exports = options => {
       }
 
       try {
-        return await dailyColl.find({
-          partitionDate: { $gte: from, $lte: to }
-        }).project({ _id: 0, questionsCount: 1, assertion: 1, partitionDate: 1 }).toArray()
+        return await dailyColl
+          .find({
+            partitionDate: { $gte: from, $lte: to }
+          })
+          .project({ _id: 0, questionsCount: 1, assertion: 1, partitionDate: 1 })
+          .sort({ partitionDate: 1 })
+          .toArray()
       } catch (err) {
         throw new Error('Internal MongoDB error', err)
       }

@@ -45,6 +45,12 @@ const init = async () => {
     require('./plugins/statistics')
   ])
 
+  server.route({
+    method: 'GET',
+    path: '/',
+    handler: function () { return { application: 'eight-ball-answers' } }
+  })
+
   await server.start()
 }
 
