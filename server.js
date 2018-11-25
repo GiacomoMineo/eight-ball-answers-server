@@ -5,7 +5,7 @@ const Hapi = require('hapi')
 const configuration = require('./configuration.json')[process.env.NODE_ENV || 'local']
 
 const server = Hapi.server({
-  port: 3001,
+  port: process.env.PORT || configuration.serverPort,
   host: 'localhost',
   router: {
     isCaseSensitive: false,

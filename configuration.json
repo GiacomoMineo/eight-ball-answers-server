@@ -1,17 +1,11 @@
 {
   "local": {
-    "serverAddress": {
-      "host": "localhost",
-      "port": 3001
-    },
+    "serverPort": 3001,
     "dbUrl": "mongodb+srv://dbuser:Fv8e6y5zFPJCGQqK@eightballanswers-eda0u.gcp.mongodb.net/statistics?retryWrites=true",
     "loggerLevel": "info"
   },
   "prod": {
-    "serverAddress": {
-      "host": "localhost",
-      "port": 3000
-    },
+    "serverPort": 5000,
     "dbUrl": "mongodb+srv://dbuser:Fv8e6y5zFPJCGQqK@eightballanswers-eda0u.gcp.mongodb.net/statistics?retryWrites=true",
     "loggerLevel": "error"
   }
