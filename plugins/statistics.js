@@ -4,7 +4,7 @@ module.exports = {
   register: function (server, options) {
     const handlers = {
       getStatistics: function (request, h) {
-        const result = server.StatisticsService.getDailyQuestions(
+        const result = server.StatisticsService.getDailyStatistics(
           request.query.from,
           request.query.to
         )

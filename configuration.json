@@ -4,7 +4,7 @@
       "host": "localhost",
       "port": 3001
     },
-    "dbUrl": "mongodb+srv://dbuser:Fv8e6y5zFPJCGQqK@eightballanswers-eda0u.gcp.mongodb.net/database?retryWrites=true",
+    "dbUrl": "mongodb+srv://dbuser:Fv8e6y5zFPJCGQqK@eightballanswers-eda0u.gcp.mongodb.net/statistics?retryWrites=true",
     "loggerLevel": "info"
   },
   "prod": {}

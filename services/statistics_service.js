@@ -4,10 +4,9 @@ const moment = require('moment')
 module.exports = options => {
   const db = options.mongo.db
   const dailyColl = db.collection('daily')
-  const statsColl = db.collection('statistics')
 
   return {
-    async saveQA (questionText, answer) {
+    async saveDailyQA (questionText, answer) {
       const date = moment()
       const partitionDate = parseInt(date.format('YYYYMMDD'))
 
@@ -30,11 +29,11 @@ module.exports = options => {
       }
     },
 
-    async getDailyQuestions (from, to) {
+    async getDailyStatistics (from, to) {
       try {
         return await dailyColl.find({
           partitionDate: { $gte: from, $lte: to }
-        }).project({ _id: 0, questionsCount: 1, assertion: 1 }).toArray()
+        }).project({ _id: 0, questionsCount: 1, assertion: 1, partitionDate: 1 }).toArray()
       } catch (err) {
         throw new Error('Internal MongoDB error', err)
       }
